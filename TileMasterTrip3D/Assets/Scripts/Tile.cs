@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Tile_Scriptable tile;
+
+    private void OnMouseEnter()
     {
-        
+        gameObject.GetComponent<Outline>().OutlineWidth = 10f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        Game_Manager.Instance.Insert_Tile(tile.Tile_Entity);
     }
-    private void OnMouseOver()
-    {
-        gameObject.GetComponent<Outline>().OutlineWidth = 5f;
-    }
-
 
     private void OnMouseExit()
     {
