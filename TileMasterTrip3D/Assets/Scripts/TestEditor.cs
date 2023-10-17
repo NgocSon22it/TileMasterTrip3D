@@ -5,9 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class TestEditor : EditorWindow
+public class TestEditor : MonoBehaviour
 {
-    string fileName = "MP4.txt";
+   /* string fileName = "MP4.txt";
 
     string status = "Idle";
     string recordButton = "Record";
@@ -58,5 +58,5 @@ public class TestEditor : EditorWindow
     public void Choose()
     {
         Debug.Log("Click");
-    }
+    }*/
 }

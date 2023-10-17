@@ -8,5 +8,4 @@ public class Tile_Entity
 {
     public string Id;
     public string Name;
-    public Sprite Image;
 }
