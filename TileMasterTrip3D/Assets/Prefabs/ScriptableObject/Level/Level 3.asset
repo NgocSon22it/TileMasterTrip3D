@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf88be276881c04e8ccb77b5c5be2e4, type: 3}
+  m_Name: Level 3
+  m_EditorClassIdentifier: 
+  Level_Entity:
+    Level: 1
+    MapName: Map 1
+    DisplayName: Map 1
+    PlayTime: 300
+    ListTile:
+    - {fileID: 6650972184752780180, guid: 9a39eaea91a699f4a840662c7109e981, type: 3}
+    - {fileID: 6650972184752780180, guid: 43bf21938bba3554bad7dc6710b7ee32, type: 3}
+    - {fileID: 6650972184752780180, guid: b344eb690e0b7ea4eb1593459c6a900e, type: 3}
+    - {fileID: 6650972184752780180, guid: 09ab079650e075944a37719b86dd2728, type: 3}
+    - {fileID: 6650972184752780180, guid: dc950232bcd84f5489bd4b06a9da0b90, type: 3}
+    - {fileID: 6650972184752780180, guid: c8a5a8d46eccd9c41afc74c2124ad431, type: 3}
+    - {fileID: 6650972184752780180, guid: 7d31332c26f9f80409e4fe6b94836593, type: 3}
+    - {fileID: 6650972184752780180, guid: cf204053dd4596443ab8d3820bee3a6b, type: 3}
