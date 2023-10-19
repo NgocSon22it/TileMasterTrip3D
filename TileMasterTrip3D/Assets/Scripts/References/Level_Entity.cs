@@ -10,5 +10,5 @@ public class Level_Entity
     public string DisplayName;
     public int PlayTime;
 
-    public List<GameObject> ListTile = new List<GameObject>();
+    public List<Tiles_ID> ListTile = new List<Tiles_ID>();
 }

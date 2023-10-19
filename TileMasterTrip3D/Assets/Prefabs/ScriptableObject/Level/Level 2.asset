@@ -13,15 +13,8 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   Level_Entity:
-    Level: 1
-    MapName: Map 1
-    DisplayName: Map 1
-    PlayTime: 300
-    ListTile:
-    - {fileID: 6650972184752780180, guid: 43bf21938bba3554bad7dc6710b7ee32, type: 3}
-    - {fileID: 6650972184752780180, guid: 9a39eaea91a699f4a840662c7109e981, type: 3}
-    - {fileID: 6650972184752780180, guid: 003054775d208e64b9f360fb2cb7a431, type: 3}
-    - {fileID: 6650972184752780180, guid: b344eb690e0b7ea4eb1593459c6a900e, type: 3}
-    - {fileID: 6650972184752780180, guid: dc950232bcd84f5489bd4b06a9da0b90, type: 3}
-    - {fileID: 6650972184752780180, guid: 0e97c59bd44be234099ffa4285a8832a, type: 3}
-    - {fileID: 6650972184752780180, guid: cf204053dd4596443ab8d3820bee3a6b, type: 3}
+    Level: 2
+    MapName: Level 2
+    DisplayName: Level 2
+    PlayTime: 420
+    ListTile: 0200000001000000050000000400000008000000070000000a0000000e0000000b000000

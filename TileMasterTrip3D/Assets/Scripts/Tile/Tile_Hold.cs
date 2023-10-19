@@ -7,9 +7,16 @@ public class Tile_Hold : MonoBehaviour
 {
     public Tile tile;
 
-    public bool IsFill;
+    public bool IsFill, IsBuy;
 
     public RectTransform MainPoint;
+
+    [SerializeField] public GameObject Canvas;
+
+    private void Awake()
+    {
+        CheckIsBuy();
+    }
 
     public void Equip(Tile tile)
     {
@@ -40,4 +47,17 @@ public class Tile_Hold : MonoBehaviour
         }
     }
 
+    public void CheckIsBuy()
+    {
+        if (IsBuy)
+        {
+            Canvas.SetActive(false);
+        }
+    }
+
+    public void Buy()
+    {
+        IsBuy = true;
+        CheckIsBuy();
+    }
 }

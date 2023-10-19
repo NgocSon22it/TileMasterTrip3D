@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -13,13 +13,19 @@ public class Game_Manager : MonoBehaviour
     [Header("Tile Pool")]
     [SerializeField] Tile_Pool tile_Pool;
 
+    [Header("Buy Tile Hold")]
+    [SerializeField] Tile_Hold Slot;
+    [SerializeField] GameObject BuySlot_Panel;
+
     [Header("Configure")]
     [SerializeField] List<Tile_Hold> listTile_Hold;
     [SerializeField] public List<GameObject> listTile;
-    [SerializeField] public Level_Scriptable level_Scriptable;
+    [SerializeField] public List<Level_Scriptable> list_Level;
     int Index_Insert, Index_Remove, countDuplicate, Streak, Streak_Time = 5;
     Coroutine Streak_Coroutine, CheckLose_Coroutine;
+    [HideInInspector]
     public bool IsOver, isPause, IsStart;
+    public Level_Entity CurrentLevel;
 
     [Header("Object_Pool")]
     [SerializeField] List<GameObject> Pool_StarEffect;
@@ -34,28 +40,36 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] TMP_Text Streak_Txt;
     [SerializeField] Image Streak_Progress;
 
+    [Header("Win/Lose")]
+    [SerializeField] GameObject WinPanel;
+    [SerializeField] TMP_Text Prize_Txt;
+    [SerializeField] AudioClip WinMusic;
+
+    [SerializeField] GameObject LosePanel;
+    [SerializeField] TMP_Text Status_Txt;
+    [SerializeField] AudioClip LoseMusic;
+
+    [SerializeField] AudioSource Source_WinLose;
+    [SerializeField] AudioSource Source_Earn;
     private void Awake()
     {
         Instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            tile_Pool.gameObject.SetActive(true);
-        }
+        tile_Pool.SpawnTile();
     }
     public void Add_Score()
     {
-        References.Star += (1 + Streak);
-        Star_Txt.text = References.Star.ToString();
+        References.CurrentStar += (1 + Streak);
+        Star_Txt.text = References.CurrentStar.ToString();
 
         Streak_Start();
 
         if (Check_Win())
         {
-            Debug.Log("Win r");
+            Init_End(true, References.CurrentStar.ToString());
         }
     }
 
@@ -80,32 +94,38 @@ public class Game_Manager : MonoBehaviour
         StartCoroutine(Start_Coroutine());
     }
 
+    public void Init_End(bool isWin, string status)
+    {
+        StopAllCoroutines();
+        Streak_Toggle(false);
+        IsOver = true; IsStart = false;
+        Game_ShowEndPanel(isWin, status);
+    }
+
     public void Insert_Tile(Tile tile)
     {
-        if (IsStart)
+        if (Check_Lose() == false && IsOver == false)
         {
-            if (Check_Lose() == false && IsOver == false)
+            Index_Insert = GetIndex_Insert(tile.tile_Scriptable.Tile_Entity.Id);
+
+            for (int i = listTile_Hold.Count - 1; i >= Index_Insert + 1; i--)
             {
-                Index_Insert = GetIndex_Insert(tile.tile_Scriptable.Tile_Entity.Id);
-
-                for (int i = listTile_Hold.Count - 1; i >= Index_Insert + 1; i--)
-                {
-                    listTile_Hold[i].Equip(listTile_Hold[i - 1].tile);
-                }
-
-                listTile_Hold[Index_Insert].Equip(tile);
-
-                Check_Duplicate(tile);
-
-                if (CheckLose_Coroutine != null)
-                {
-                    StopCoroutine(CheckLose_Coroutine);
-                    CheckLose_Coroutine = null;
-                }
-
-                CheckLose_Coroutine = StartCoroutine(CheckLose_Delay());
+                listTile_Hold[i].Equip(listTile_Hold[i - 1].tile);
             }
+
+            listTile_Hold[Index_Insert].Equip(tile);
+
+            Check_Duplicate(tile);
+
+            if (CheckLose_Coroutine != null)
+            {
+                StopCoroutine(CheckLose_Coroutine);
+                CheckLose_Coroutine = null;
+            }
+
+            CheckLose_Coroutine = StartCoroutine(CheckLose_Delay());
         }
+
     }
 
     public bool Check_Lose()
@@ -150,7 +170,7 @@ public class Game_Manager : MonoBehaviour
 
     }
 
-    public int GetIndex_Insert(string id)
+    public int GetIndex_Insert(Tiles_ID id)
     {
         for (int i = listTile_Hold.Count - 1; i >= 0; i--)
         {
@@ -163,7 +183,7 @@ public class Game_Manager : MonoBehaviour
         return 0;
     }
 
-    public int GetIndex_Remove(string id)
+    public int GetIndex_Remove(Tiles_ID id)
     {
         for (int i = 0; i < listTile_Hold.Count; i++)
         {
@@ -198,7 +218,7 @@ public class Game_Manager : MonoBehaviour
             }
 
         }
-
+        Source_Earn.Play();
         Add_Score();
     }
 
@@ -208,8 +228,7 @@ public class Game_Manager : MonoBehaviour
 
         if (Check_Lose())
         {
-            IsOver = true;
-            Debug.Log("Thua nha");
+            Init_End(false, Message.Lose_OutOfSlot);
         }
     }
 
@@ -237,11 +256,11 @@ public class Game_Manager : MonoBehaviour
 
     private IEnumerator Start_Coroutine()
     {
-        float currentTime = level_Scriptable.Level_Entity.PlayTime;
+        float currentTime = CurrentLevel.PlayTime;
         int minutes, seconds;
         IsStart = true;
-
-        Level_Txt.text = $"Lv. {level_Scriptable.Level_Entity.Level}";
+        References.CurrentStar = 0;
+        Level_Txt.text = $"Lv. {CurrentLevel.Level}";
 
         while (currentTime > 0)
         {
@@ -256,7 +275,7 @@ public class Game_Manager : MonoBehaviour
         }
 
         Time_Txt.text = "00:00";
-
+        Init_End(false, Message.Lose_TimeUp);
     }
 
     private IEnumerator Streak_Inscrease()
@@ -268,13 +287,63 @@ public class Game_Manager : MonoBehaviour
 
         while (currentTime > 0)
         {
+            currentTime -= Time.deltaTime;
             Streak_Progress.fillAmount = (float)currentTime / (float)Streak_Time;
-            yield return new WaitForSeconds(0.01f);
-            currentTime -= 0.01f;
+            yield return null;
         }
 
         Streak = 0;
         Streak_Toggle(false);
 
+    }
+
+    public void Game_ShowEndPanel(bool isWin, string status)
+    {
+        if (isWin)
+        {
+            Prize_Txt.text = $"+{status}";
+            References.Add_Reward();
+            Load_Sound(WinMusic);
+            WinPanel.SetActive(true);
+        }
+        else
+        {
+            Status_Txt.text = $"{status}";
+            Load_Sound(LoseMusic);
+            LosePanel.SetActive(true);
+        }
+    }
+
+    public void Load_Level()
+    {
+        if (References.account != null)
+        {
+            CurrentLevel = list_Level[References.account.Level - 1].Level_Entity;
+        }
+    }
+
+    public void Load_Sound(AudioClip audioClip)
+    {
+        Source_WinLose.clip = audioClip;
+        Source_WinLose.Play();
+    }
+
+    public void Open_BuySlotPanel()
+    {
+        Time.timeScale = 0f;
+        BuySlot_Panel.SetActive(true);
+    }
+
+    public void Close_BuySlotPanel()
+    {
+        Time.timeScale = 1f;
+        BuySlot_Panel.SetActive(false);
+    }
+
+    public void BuySlot()
+    {
+        Slot.Buy();
+        listTile_Hold.Add(Slot);
+        Close_BuySlotPanel();
     }
 }

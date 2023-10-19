@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Bush_002
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Bush_002
+    Id: 1
     Name: Bush 2

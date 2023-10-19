@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Crystals_004
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Crystals_004
+    Id: 9
     Name: Crystals 4

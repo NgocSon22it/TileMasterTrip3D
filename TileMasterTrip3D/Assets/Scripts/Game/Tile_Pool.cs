@@ -8,17 +8,24 @@ public class Tile_Pool : MonoBehaviour
 {
     [SerializeField, Range(0, 360f)]
     float rotationSpeed;
-    float force;
 
     [Header("Configure")]
     [SerializeField] Transform SpawnPoint;
-    GameObject obj;
+    float force;
 
-    List<GameObject> listTile = new List<GameObject>();
-    int Multiple = 9;
-    private void OnEnable()
+    [Header("Object Pool")]
+    [SerializeField] List<GameObject> listTile = new List<GameObject>();
+
+    public void SpawnTile()
     {
-        StartCoroutine(SpawnTile());
+        Toggle_TilePool(true);
+        Game_Manager.Instance.Load_Level();
+        StartCoroutine(SpawnTile_Start());
+    }
+
+    public void Toggle_TilePool(bool value)
+    {
+        gameObject.SetActive(value);
     }
 
     void FixedUpdate()
@@ -26,34 +33,38 @@ public class Tile_Pool : MonoBehaviour
         transform.Rotate(Vector3.up * rotationSpeed * Time.fixedDeltaTime);
     }
 
-    IEnumerator SpawnTile()
+
+    IEnumerator SpawnTile_Start()
     {
-        foreach(GameObject tile in Game_Manager.Instance.level_Scriptable.Level_Entity.ListTile)
+        foreach (Tiles_ID tiles_ID in Game_Manager.Instance.CurrentLevel.ListTile)
         {
-            for(int i = 0; i < Multiple; i++)
+            foreach (GameObject tile in listTile)
             {
-                listTile.Add(tile);
+                if (tile.GetComponent<Tile>().tile_Scriptable.Tile_Entity.Id == tiles_ID)
+                {
+                    Game_Manager.Instance.listTile.Add(tile);
+                }
             }
         }
 
         var random = new System.Random();
-        var randomized = listTile.OrderBy(item => random.Next());
+        var randomized = Game_Manager.Instance.listTile.OrderBy(item => random.Next());
 
         foreach (GameObject tile in randomized)
         {
-            obj = Instantiate(tile, SpawnPoint.position, SpawnPoint.rotation);
-
-            Game_Manager.Instance.listTile.Add(obj);
+            tile.transform.position = SpawnPoint.position;
+            tile.transform.rotation = SpawnPoint.rotation;
+            tile.SetActive(true);
 
             force = UnityEngine.Random.Range(0.1f, 1.5f);
 
-            obj.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.VelocityChange);
+            tile.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.VelocityChange);
 
-            obj.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+            tile.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
             yield return new WaitForSeconds(0.05f);
         }
 
-        gameObject.SetActive(false);
+        Toggle_TilePool(false);
         Game_Manager.Instance.Init_Start();
     }
 

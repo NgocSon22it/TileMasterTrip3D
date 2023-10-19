@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Mushroom_002
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Mushroom_002
+    Id: 14
     Name: Mushroom 2

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Crescent_001
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Crescent_001
+    Id: 4
     Name: Crescent 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Flower_001
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Flower_001
+    Id: 10
     Name: Flower 1

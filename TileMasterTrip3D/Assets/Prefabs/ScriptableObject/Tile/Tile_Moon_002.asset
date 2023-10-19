@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tile_Moon_002
   m_EditorClassIdentifier: 
   Tile_Entity:
-    Id: Tile_Moon_002
+    Id: 12
     Name: Moon 2

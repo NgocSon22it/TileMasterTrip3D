@@ -6,6 +6,6 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Tile_Entity
 {
-    public string Id;
+    public Tiles_ID Id;
     public string Name;
 }

@@ -14,6 +14,7 @@ public class Account_Entity
 
     public int Level;
 
+    public Account_Entity() { }
     public Account_Entity(string id, string name, int coin, int star, int life, int level)
     {
         Id = id;

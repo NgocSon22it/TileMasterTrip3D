@@ -50,6 +50,7 @@ MonoBehaviour:
   SoundCheckBox: {fileID: 0}
   MusicAudioMixer: {fileID: 24100000, guid: f3506ae4c243afb4ab9bc9476af21930, type: 2}
   SoundAudioMixer: {fileID: 24100000, guid: a2ff02c1b78a39b4c8ddaa74691d3190, type: 2}
+  AudioSource: {fileID: 1493386110395843482}
 --- !u!82 &1493386110395843482
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,11 +60,11 @@ AudioSource:
   m_GameObject: {fileID: 4148884908691556797}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: f3506ae4c243afb4ab9bc9476af21930,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a2ff02c1b78a39b4c8ddaa74691d3190,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 72a867b1dfb0c344492f6f87178a7bf9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
