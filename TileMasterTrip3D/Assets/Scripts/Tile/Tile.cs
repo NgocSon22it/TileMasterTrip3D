@@ -62,6 +62,11 @@ public class Tile : MonoBehaviour
         transform.rotation = Quaternion.Euler(90f, 0, 0);
     }
 
+    public void SetDefaultSize()
+    {
+        transform.localScale = defaultVector;
+    }
+
     private void OnMouseEnter()
     {
         if (!IsUse && Game_Manager.Instance.IsStart)
@@ -77,7 +82,6 @@ public class Tile : MonoBehaviour
         if (!IsUse && Game_Manager.Instance.IsStart)
         {
             Game_Manager.Instance.Insert_Tile(this);
-            transform.localScale = defaultVector;
         }
     }
 

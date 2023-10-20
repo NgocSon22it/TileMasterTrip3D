@@ -13,9 +13,10 @@ public static class References
 
     public static bool FirstLogin = true;
 
-    public static void Add_Reward()
+    public static void Add_Reward(int Coin, int Star)
     {
-        account.Star += CurrentStar;
+        account.Star += Star;
+        account.Coin += Coin;
 
         if (account.Level < 3)
         {
@@ -60,6 +61,8 @@ public static class Message
 
     public static string Lose_OutOfSlot = "Hết slot rồi!";
     public static string Lose_TimeUp = "Hết thời gian!";
+
+    public static string NotEnoughMoney = "Không đủ tiền!";
 }
 
 public enum Scenes

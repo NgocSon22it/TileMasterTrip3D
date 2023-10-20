@@ -10,5 +10,7 @@ public class Level_Entity
     public string DisplayName;
     public int PlayTime;
 
+    public int CoinBonus;
+
     public List<Tiles_ID> ListTile = new List<Tiles_ID>();
 }

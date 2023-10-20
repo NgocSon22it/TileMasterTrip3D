@@ -17,4 +17,5 @@ MonoBehaviour:
     MapName: Level 1
     DisplayName: Level 1
     PlayTime: 300
+    CoinBonus: 500
     ListTile: 00000000010000000400000007000000060000000b0000000d00000002000000

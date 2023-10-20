@@ -16,6 +16,8 @@ public class Game_Manager : MonoBehaviour
     [Header("Buy Tile Hold")]
     [SerializeField] Tile_Hold Slot;
     [SerializeField] GameObject BuySlot_Panel;
+    [SerializeField] TMP_Text Message_Txt;
+    int SlotPrice = 100;
 
     [Header("Configure")]
     [SerializeField] List<Tile_Hold> listTile_Hold;
@@ -32,25 +34,18 @@ public class Game_Manager : MonoBehaviour
     GameObject obj;
 
     [Header("UI")]
-    [SerializeField] TMP_Text Star_Txt;
-    [SerializeField] TMP_Text Time_Txt;
-    [SerializeField] TMP_Text Level_Txt;
+    [SerializeField] TMP_Text Star_Txt, Time_Txt, Level_Txt;
 
     [SerializeField] GameObject Streak_Object;
     [SerializeField] TMP_Text Streak_Txt;
     [SerializeField] Image Streak_Progress;
 
     [Header("Win/Lose")]
-    [SerializeField] GameObject WinPanel;
-    [SerializeField] TMP_Text Prize_Txt;
-    [SerializeField] AudioClip WinMusic;
+    [SerializeField] GameObject WinPanel, LosePanel;
+    [SerializeField] TMP_Text CoinBonus_Txt, StarBonus_Txt, Status_Txt;
+    [SerializeField] AudioClip WinMusic, LoseMusic;
 
-    [SerializeField] GameObject LosePanel;
-    [SerializeField] TMP_Text Status_Txt;
-    [SerializeField] AudioClip LoseMusic;
-
-    [SerializeField] AudioSource Source_WinLose;
-    [SerializeField] AudioSource Source_Earn;
+    [SerializeField] AudioSource Source_WinLose, Source_EarnTile;
     private void Awake()
     {
         Instance = this;
@@ -106,6 +101,8 @@ public class Game_Manager : MonoBehaviour
     {
         if (Check_Lose() == false && IsOver == false)
         {
+            tile.SetDefaultSize();
+
             Index_Insert = GetIndex_Insert(tile.tile_Scriptable.Tile_Entity.Id);
 
             for (int i = listTile_Hold.Count - 1; i >= Index_Insert + 1; i--)
@@ -128,7 +125,7 @@ public class Game_Manager : MonoBehaviour
 
     }
 
-    public bool Check_Lose()
+    private bool Check_Lose()
     {
         foreach (var tile in listTile_Hold)
         {
@@ -138,7 +135,7 @@ public class Game_Manager : MonoBehaviour
         return true;
     }
 
-    public bool Check_Win()
+    private bool Check_Win()
     {
         foreach (GameObject obj in listTile)
         {
@@ -151,7 +148,7 @@ public class Game_Manager : MonoBehaviour
         return true;
     }
 
-    public void Check_Duplicate(Tile tile)
+    private void Check_Duplicate(Tile tile)
     {
         countDuplicate = 0;
 
@@ -170,7 +167,7 @@ public class Game_Manager : MonoBehaviour
 
     }
 
-    public int GetIndex_Insert(Tiles_ID id)
+    private int GetIndex_Insert(Tiles_ID id)
     {
         for (int i = listTile_Hold.Count - 1; i >= 0; i--)
         {
@@ -183,7 +180,7 @@ public class Game_Manager : MonoBehaviour
         return 0;
     }
 
-    public int GetIndex_Remove(Tiles_ID id)
+    private int GetIndex_Remove(Tiles_ID id)
     {
         for (int i = 0; i < listTile_Hold.Count; i++)
         {
@@ -218,7 +215,7 @@ public class Game_Manager : MonoBehaviour
             }
 
         }
-        Source_Earn.Play();
+        Source_EarnTile.Play();
         Add_Score();
     }
 
@@ -232,7 +229,7 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    public GameObject GetObjectFromPool(List<GameObject> list)
+    private GameObject GetObjectFromPool(List<GameObject> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
@@ -301,8 +298,10 @@ public class Game_Manager : MonoBehaviour
     {
         if (isWin)
         {
-            Prize_Txt.text = $"+{status}";
-            References.Add_Reward();
+            StarBonus_Txt.text = $"+{status}";
+            CoinBonus_Txt.text = $"+{CurrentLevel.CoinBonus}";
+
+            References.Add_Reward(CurrentLevel.CoinBonus, References.CurrentStar);
             Load_Sound(WinMusic);
             WinPanel.SetActive(true);
         }
@@ -328,13 +327,17 @@ public class Game_Manager : MonoBehaviour
         Source_WinLose.Play();
     }
 
-    public void Open_BuySlotPanel()
+
+    #region Buy Slot
+
+    public void BuySlot_Open()
     {
         Time.timeScale = 0f;
+        BuySlot_Message("");
         BuySlot_Panel.SetActive(true);
     }
 
-    public void Close_BuySlotPanel()
+    public void BuySlot_Close()
     {
         Time.timeScale = 1f;
         BuySlot_Panel.SetActive(false);
@@ -342,8 +345,24 @@ public class Game_Manager : MonoBehaviour
 
     public void BuySlot()
     {
-        Slot.Buy();
-        listTile_Hold.Add(Slot);
-        Close_BuySlotPanel();
+        if (References.account.Coin >= SlotPrice)
+        {
+            References.account.Coin -= SlotPrice;
+            Slot.Buy();
+            listTile_Hold.Add(Slot);
+            BuySlot_Close();
+        }
+        else
+        {
+            BuySlot_Message(Message.NotEnoughMoney);
+        }
     }
+    private void BuySlot_Message(string message)
+    {
+        Message_Txt.text = message;
+    }
+    #endregion
+
+
+
 }

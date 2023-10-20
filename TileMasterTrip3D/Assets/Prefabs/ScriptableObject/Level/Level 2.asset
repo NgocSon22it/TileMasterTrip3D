@@ -17,4 +17,5 @@ MonoBehaviour:
     MapName: Level 2
     DisplayName: Level 2
     PlayTime: 420
+    CoinBonus: 600
     ListTile: 0200000001000000050000000400000008000000070000000a0000000e0000000b000000

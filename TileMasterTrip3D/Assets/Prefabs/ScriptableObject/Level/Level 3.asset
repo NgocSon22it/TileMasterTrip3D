@@ -17,4 +17,5 @@ MonoBehaviour:
     MapName: Level 3
     DisplayName: Level 3
     PlayTime: 600
+    CoinBonus: 700
     ListTile: 02000000030000000500000008000000090000000a0000000e0000000c0000000b0000000d000000
