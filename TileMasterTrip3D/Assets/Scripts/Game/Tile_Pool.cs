@@ -56,12 +56,12 @@ public class Tile_Pool : MonoBehaviour
             tile.transform.rotation = SpawnPoint.rotation;
             tile.SetActive(true);
 
-            force = UnityEngine.Random.Range(0.1f, 1.5f);
+            force = UnityEngine.Random.Range(0.1f, 1f);
 
             tile.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.VelocityChange);
 
             tile.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
 
         Toggle_TilePool(false);

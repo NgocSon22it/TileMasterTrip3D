@@ -74,34 +74,30 @@ public class Setting_Manager : MonoBehaviour
 
     public void Game_Pause()
     {
+        Game_Manager.Instance.Set_PauseGame(true);
         SettingPanel.SetActive(true);
         PlaySound();
-        Time.timeScale = 0f;
     }
 
     public void Game_Continue()
     {
+        Game_Manager.Instance.Set_PauseGame(false);
         SettingPanel.SetActive(false);
         PlaySound();
-        Time.timeScale = 1f;
     }
 
     public void Game_Play()
     {
-        Time.timeScale = 1f;
         PlaySound();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(Scenes.Game.ToString());
     }
 
     public void Game_GoToHome()
     {
         PlaySound();
-        SceneManager.LoadScene(Scenes.Home.ToString());
-    }
-
-    private void OnApplicationQuit()
-    {
         References.SaveAccountData(References.account);
+        SceneManager.LoadScene(Scenes.Home.ToString());
     }
 
     public void PlaySound()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.UI;
 
 public class Home_Manager : MonoBehaviour
@@ -20,13 +21,19 @@ public class Home_Manager : MonoBehaviour
     [SerializeField] Image Progress_Bar;
 
     float LoadingTime = 2, CurrentTime, Progress;
-
+    int Percentage;
     [Header("Instance")]
     public static Home_Manager Instance;
 
     private void Awake()
     {
         Instance = this;
+
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite) || !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        }
     }
 
     private void Start()
@@ -74,8 +81,11 @@ public class Home_Manager : MonoBehaviour
             Progress = CurrentTime / LoadingTime;
             Progress_Bar.fillAmount = Progress;
 
-            int percentage = Mathf.RoundToInt(Progress * 100);
-            Progress_Txt.text = percentage + "%";
+            Percentage = Mathf.RoundToInt(Progress * 100);
+
+            if (Percentage > 100) { Percentage = 100; }
+
+            Progress_Txt.text = Percentage + "%";
             yield return null;
         }
 

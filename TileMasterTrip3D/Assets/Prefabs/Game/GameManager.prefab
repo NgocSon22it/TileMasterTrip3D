@@ -852,11 +852,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1272916604216424328}
+  - {fileID: 3725235140748545218}
   - {fileID: 8744350274404324765}
   - {fileID: 5877712094670766125}
   - {fileID: 8226392615010055887}
   - {fileID: 4181432692556774360}
-  - {fileID: 3725235140748545218}
   - {fileID: 1137542328677012852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -965,6 +965,7 @@ MonoBehaviour:
     MapName: 
     DisplayName: 
     PlayTime: 0
+    CoinBonus: 0
     ListTile: 
   Pool_StarEffect:
   - {fileID: 1096856469154951955}
@@ -984,7 +985,8 @@ MonoBehaviour:
   Streak_Progress: {fileID: 3863342721835137782}
   WinPanel: {fileID: 7701016748548209930}
   LosePanel: {fileID: 8961212864799888586}
-  Prize_Txt: {fileID: 3800928676387344848}
+  CoinBonus_Txt: {fileID: 552103873389272650}
+  StarBonus_Txt: {fileID: 3800928676387344848}
   Status_Txt: {fileID: 7589119684233095750}
   WinMusic: {fileID: 8300000, guid: ea1afe91719fddd448a3463a2f77cfaf, type: 3}
   LoseMusic: {fileID: 8300000, guid: 68b48ae49b94d8a4abfc87c588e00113, type: 3}
@@ -7358,7 +7360,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 336.875, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5508641057053785812
 CanvasRenderer:

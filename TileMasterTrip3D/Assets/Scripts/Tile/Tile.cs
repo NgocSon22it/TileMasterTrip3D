@@ -69,7 +69,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (!IsUse && Game_Manager.Instance.IsStart)
+        if (CanSelectTile())
         {
             a.Play();
             gameObject.GetComponent<Outline>().OutlineWidth = 10f;
@@ -79,7 +79,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!IsUse && Game_Manager.Instance.IsStart)
+        if (CanSelectTile())
         {
             Game_Manager.Instance.Insert_Tile(this);
         }
@@ -87,10 +87,15 @@ public class Tile : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!IsUse)
+        if (CanSelectTile())
         {
             gameObject.GetComponent<Outline>().OutlineWidth = 0f;
         }
 
+    }
+
+    public bool CanSelectTile()
+    {
+        return !IsUse && Game_Manager.Instance.IsStart && !Game_Manager.Instance.isPause;
     }
 }

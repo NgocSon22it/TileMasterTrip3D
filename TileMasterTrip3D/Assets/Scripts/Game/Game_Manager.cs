@@ -311,12 +311,14 @@ public class Game_Manager : MonoBehaviour
             Load_Sound(LoseMusic);
             LosePanel.SetActive(true);
         }
+
+        Set_PauseGame(true);
     }
 
     public void Load_Level()
     {
         if (References.account != null)
-        {
+        {        
             CurrentLevel = list_Level[References.account.Level - 1].Level_Entity;
         }
     }
@@ -327,19 +329,20 @@ public class Game_Manager : MonoBehaviour
         Source_WinLose.Play();
     }
 
-
     #region Buy Slot
 
     public void BuySlot_Open()
     {
-        Time.timeScale = 0f;
+        Set_PauseGame(true);
         BuySlot_Message("");
+        Setting_Manager.Instance.PlaySound();
         BuySlot_Panel.SetActive(true);
     }
 
     public void BuySlot_Close()
     {
-        Time.timeScale = 1f;
+        Set_PauseGame(false);
+        Setting_Manager.Instance.PlaySound();
         BuySlot_Panel.SetActive(false);
     }
 
@@ -363,6 +366,9 @@ public class Game_Manager : MonoBehaviour
     }
     #endregion
 
-
-
+    public void Set_PauseGame(bool value)
+    {
+        isPause = value;
+        Time.timeScale = value == true ? 0f : 1f;
+    }
 }

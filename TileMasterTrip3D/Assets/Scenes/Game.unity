@@ -175,8 +175,8 @@ Transform:
   m_GameObject: {fileID: 23091147}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.233, y: 0, z: -0.78}
-  m_LocalScale: {x: 0.29932058, y: 1, z: 1}
+  m_LocalPosition: {x: 0.213, y: -0.0924, z: -0.78}
+  m_LocalScale: {x: 0.30060765, y: 1.1848, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 284136073}
@@ -1801,18 +1801,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8119771547461764217}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1149221635 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 552103873389272650, guid: 4fdd6b0b69ebbc5498a3009054c15b08,
-    type: 3}
-  m_PrefabInstance: {fileID: 4435226578333326256}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1171827444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6521441566398450262, guid: 2dc6e75c9e3cca34a90bb1f3f2b48524,
@@ -2447,8 +2435,8 @@ Transform:
   m_GameObject: {fileID: 1844938456}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3506, y: 0, z: -0.78}
-  m_LocalScale: {x: 0.29882517, y: 1, z: 1}
+  m_LocalPosition: {x: -0.3644, y: -0.0912, z: -0.78}
+  m_LocalScale: {x: 0.366195, y: 1.1824, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 284136073}
@@ -2882,61 +2870,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
-    - target: {fileID: 154268069128751661, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 154268069128751661, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 190120388307425273, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4435226578333326257}
-    - target: {fileID: 190120388307425273, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 190120388307425273, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 223500064260108548, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
     - target: {fileID: 223500064260108548, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 223500064260108548, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 243969994764675795, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
     - target: {fileID: 243969994764675795, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 243969994764675795, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4435226578333326257}
     - target: {fileID: 1736821927093013028, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
       propertyPath: m_Camera
@@ -3002,61 +2950,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
-    - target: {fileID: 5555713624317639434, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 5555713624317639434, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 5800244256806798654, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4435226578333326257}
-    - target: {fileID: 5800244256806798654, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800244256806798654, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5938458457908205246, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
     - target: {fileID: 5938458457908205246, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 5938458457908205246, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7174354991080949075, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4435226578333326257}
     - target: {fileID: 7174354991080949075, guid: 9fb611b206f466a429c39c0b88fa3e28,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuySlot_Open
-      objectReference: {fileID: 0}
-    - target: {fileID: 7174354991080949075, guid: 9fb611b206f466a429c39c0b88fa3e28,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game_Manager, Assembly-CSharp
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4435226578333326257}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3323,16 +3231,6 @@ PrefabInstance:
       objectReference: {fileID: 302548326}
     - target: {fileID: 8970391877548259689, guid: 4fdd6b0b69ebbc5498a3009054c15b08,
         type: 3}
-      propertyPath: CoinBonus_Txt
-      value: 
-      objectReference: {fileID: 1149221635}
-    - target: {fileID: 8970391877548259689, guid: 4fdd6b0b69ebbc5498a3009054c15b08,
-        type: 3}
-      propertyPath: StarBonus_Txt
-      value: 
-      objectReference: {fileID: 4435226578333326258}
-    - target: {fileID: 8970391877548259689, guid: 4fdd6b0b69ebbc5498a3009054c15b08,
-        type: 3}
       propertyPath: listTile_Hold.Array.data[0]
       value: 
       objectReference: {fileID: 1721515628527185982}
@@ -3381,18 +3279,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d287360738a29e4ab5f6766efd8b870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4435226578333326258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3800928676387344848, guid: 4fdd6b0b69ebbc5498a3009054c15b08,
-    type: 3}
-  m_PrefabInstance: {fileID: 4435226578333326256}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8119771547461764217

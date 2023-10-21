@@ -46,6 +46,8 @@ public static class References
         {
             account = GetNewAccount();
         }
+
+        if (account.Level < 1) { account.Level = 1; }
     }
     public static Account_Entity GetNewAccount()
     {
